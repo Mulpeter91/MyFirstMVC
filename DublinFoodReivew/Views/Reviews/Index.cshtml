@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DublinFoodReivew.Models.RestaurantReviewModel>
+
+@{
+    ViewBag.Title = "Index";
+    var firstReview = Model.First();
+    //Layout = null;
+}
+
+@section featured{
+    We are showing the latest @Model.Count() reviews<br />
+}
+
+<h2>The Latest Reviews</h2>
+
+@firstReview.Name<br />
+@VirtualPath
+
+@foreach(var item in Model)
+{
+    @Html.Partial("_Review", item)
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
